@@ -18,7 +18,7 @@ struct MenuItemCellView: View {
             itemImage
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 120)
+                .frame(width: 100)
                 .background(
                     Color(colorScheme == .dark ? .white : .black)
                 )
@@ -27,7 +27,7 @@ struct MenuItemCellView: View {
             Text(itemName)
                 .foregroundColor(Color(.label))
         }
-        .frame(width: 120, height: 120)
+        .frame(width: 100, height: 100)
     }
 }
 

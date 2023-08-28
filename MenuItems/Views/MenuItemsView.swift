@@ -35,7 +35,7 @@ struct MenuItemsView: View {
 
 struct GridAndScrollView: View {
     
-    let columns = [GridItem(.adaptive(minimum: 120, maximum: 300))]
+    let columns = [GridItem(.adaptive(minimum: 100, maximum: 300))]
     
     var body: some View {
         ScrollView {

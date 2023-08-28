@@ -24,6 +24,7 @@ struct MenuItemsOptionVIew: View {
                     }
                 }
             }
+            .listStyle(.grouped)
             .navigationTitle("Filter")
             .navigationBarItems(trailing:
                 Button(action: {
