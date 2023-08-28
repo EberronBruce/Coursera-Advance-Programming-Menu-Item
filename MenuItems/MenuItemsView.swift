@@ -8,6 +8,7 @@
 import SwiftUI
  
 struct MenuItemsView: View {
+    @State private var isPresentingDetailedView = false
     
     var body: some View {
         NavigationView {
@@ -16,12 +17,15 @@ struct MenuItemsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
                     Button(action: {
-                        print("Navigate")
+                        isPresentingDetailedView.toggle()
                     }) {
                         Image(systemName: "slider.horizontal.3")
                             .font(.title)
                     }
                 })
+            }
+            .sheet(isPresented: $isPresentingDetailedView) {
+                MenuItemsOptionVIew()
             }
 
         }
@@ -39,7 +43,7 @@ struct GridAndScrollView: View {
                 ForEach(menuCategories, id: \.category){ category in
                     Section(header: SectionHeaderView(title: category.category)) {
                         ForEach(category.menuItems, id: \.id) { item in
-                            NavigationLink(destination: MenuItemDetailsView()) {
+                            NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
                                 MenuItemCellView(itemName: item.dishName, itemImage: Image(systemName: "fork.knife"))
                             }
                         }
