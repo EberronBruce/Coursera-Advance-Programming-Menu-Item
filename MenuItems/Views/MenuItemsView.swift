@@ -9,10 +9,11 @@ import SwiftUI
  
 struct MenuItemsView: View {
     @State private var isPresentingDetailedView = false
+    @ObservedObject var viewModel : MenuViewViewModel
     
     var body: some View {
         NavigationView {
-            GridAndScrollView()
+            GridAndScrollView(viewModel: viewModel)
             .navigationTitle("Menu")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing, content: {
@@ -25,7 +26,7 @@ struct MenuItemsView: View {
                 })
             }
             .sheet(isPresented: $isPresentingDetailedView) {
-                MenuItemsOptionVIew()
+                MenuItemsOptionView(viewModel: viewModel)
             }
 
         }
@@ -36,23 +37,33 @@ struct MenuItemsView: View {
 struct GridAndScrollView: View {
     
     let columns = [GridItem(.adaptive(minimum: 100, maximum: 300))]
+    @ObservedObject var viewModel : MenuViewViewModel
     
     var body: some View {
         ScrollView {
-//            LazyVGrid(columns: columns, spacing: 12) {
-//                ForEach(menuCategories, id: \.category){ category in
-//                    Section(header: SectionHeaderView(title: category.category)) {
-//                        ForEach(category.menuItems, id: \.id) { item in
-//                            NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
-//                                MenuItemCellView(itemName: item.title, itemImage: Image(systemName: "fork.knife"))
-//                            }
-//                        }
-//                    }
-//                }
-//            }
+            LazyVGrid(columns: columns, spacing: 12) {
+                ForEach(viewModel.menuItemCategories, id: \.category){ category in
+                    GridSectionAndCell(category: category)
+                }
+            }
         }
     }
     
+}
+
+struct GridSectionAndCell : View {
+    let category : MenuItemCategory
+
+    var body: some View {
+        Section(header: SectionHeaderView(title: category.category)) {
+            ForEach(category.menuItems, id: \.id) { item in
+                NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
+                    MenuItemCellView(item: item)
+                        .foregroundColor(.black)
+                }
+            }
+        }
+    }
 }
 
 
@@ -75,6 +86,18 @@ struct SectionHeaderView: View {
 
 struct MenuItemsView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuItemsView()
+
+        let foodItems = MenuItemCategory(category: "Food", menuItems: foodItemsMock)
+        let drinkItems = MenuItemCategory(category: "Drinks", menuItems: drinkItemsMock)
+        let dessertItems = MenuItemCategory(category: "Desserts", menuItems: desertItemsMock)
+        
+        let viewModel = MenuViewViewModel(
+            foodMenuItems: foodItems,
+            drinkMenuItems: drinkItems,
+            desertMenuItems: dessertItems
+        )
+            
+        return MenuItemsView(viewModel: viewModel)
+            
     }
 }

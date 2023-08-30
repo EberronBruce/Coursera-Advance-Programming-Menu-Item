@@ -18,10 +18,6 @@ protocol MenuItemDelegate {
     var image : Image { get set }
 }
 
-struct MenuItemCategory {
-    let category: String
-    let menuItems : [MenuItem]
-}
 
 struct MenuItem : Identifiable, MenuItemDelegate {
 
@@ -44,3 +40,33 @@ struct MenuItem : Identifiable, MenuItemDelegate {
     }
 
 }
+
+
+// MARK: - Mock Data
+let menuItemMock = MenuItem(title: "Food 5", ingredients: [.broccoli, .carrot, .pasta, .spinach], price: 10.99, menuCategory: .food, orderCount: 1000, image: Image("Logo"))
+let foodItemsMock = [MenuItem(title: "Food 1", ingredients: [.pasta, .spinach, .tomatoSauce], price: 5.99, menuCategory: .food, orderCount: 120, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 2", ingredients: [.broccoli, .spinach, .tomatoSauce], price: 6.99, menuCategory: .food, orderCount: 300, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 3", ingredients: [.broccoli, .carrot, .spinach, .tomatoSauce], price: 15.99, menuCategory: .food, orderCount: 500, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 4", ingredients: [.broccoli, .pasta, .spinach, .tomatoSauce], price: 20.99, menuCategory: .food, orderCount: 10000, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 5", ingredients: [.broccoli, .carrot, .pasta, .spinach], price: 10.99, menuCategory: .food, orderCount: 1000, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 6", ingredients: [.carrot, .pasta, .spinach, .tomatoSauce], price: 13.99, menuCategory: .food, orderCount: 10, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 7", ingredients: [.broccoli, .tomatoSauce], price: 20.99, menuCategory: .food, orderCount: 150, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 8", ingredients: [.pasta, .tomatoSauce], price: 24.99, menuCategory: .food, orderCount: 200, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 9", ingredients: [.pasta, .spinach, .tomatoSauce], price: 17.99, menuCategory: .food, orderCount: 150, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 10", ingredients: [.broccoli, .carrot], price: 19.99, menuCategory: .food, orderCount: 400, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 11", ingredients: [.broccoli, .tomatoSauce], price: 17.99, menuCategory: .food, orderCount: 4400, image: Image(systemName: "fork.knife")),
+                 MenuItem(title: "Food 12", ingredients: [.broccoli], price: 16.99, menuCategory: .food, orderCount: 1212, image: Image(systemName: "fork.knife"))]
+
+let drinkItemsMock = [MenuItem(title: "Drink 1", ingredients: [.tomatoSauce], price: 5.99, menuCategory: .drink, orderCount: 50, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 2", ingredients: [.carrot], price: 2.99, menuCategory: .drink, orderCount: 1000, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 3", ingredients: [.broccoli], price: 8.99, menuCategory: .drink, orderCount: 200, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 4", ingredients: [.spinach, .tomatoSauce], price: 3.99, menuCategory: .drink, orderCount: 1100, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 5", ingredients: [.broccoli, .carrot, .spinach, .tomatoSauce], price: 10.99, menuCategory: .drink, orderCount: 130, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 6", ingredients: [.spinach, .tomatoSauce], price: 7.99, menuCategory: .drink, orderCount: 100, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 7", ingredients: [.broccoli, .spinach, .tomatoSauce], price: 14.99, menuCategory: .drink, orderCount: 1004, image: Image(systemName: "wineglass.fill")),
+                  MenuItem(title: "Drink 8", ingredients: [.broccoli, .spinach, .tomatoSauce], price: 12.99, menuCategory: .drink, orderCount: 1020, image: Image(systemName: "wineglass.fill"))]
+let desertItemsMock = [MenuItem(title: "Dessert 1", ingredients: [.tomatoSauce], price: 3.99, menuCategory: .dessert, orderCount: 10000, image: Image(systemName: "birthday.cake.fill")),
+                   MenuItem(title: "Dessert 2", ingredients: [.carrot], price: 5.99, menuCategory: .dessert, orderCount: 5329, image: Image(systemName: "birthday.cake.fill")),
+                   MenuItem(title: "Dessert 3", ingredients: [.spinach, .tomatoSauce], price: 6.99, menuCategory: .dessert, orderCount: 195, image: Image(systemName: "birthday.cake.fill")),
+                   MenuItem(title: "Dessert 4", ingredients: [.broccoli, .carrot, .spinach, .tomatoSauce], price: 8.99, menuCategory: .dessert, orderCount: 250, image: Image(systemName: "birthday.cake.fill"))]
+

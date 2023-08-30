@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct MenuItemDetailsView: View {
-    @Binding var menuItem : MenuItem
+    @State var menuItem : MenuItem
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                DetailsView(menuItem: $menuItem)
-            }
-            .navigationTitle(menuItem.title)
+        ScrollView {
+            DetailsView(menuItem: $menuItem)
         }
+        .navigationTitle(menuItem.title)
+        
   
     }
 }
@@ -57,6 +56,6 @@ struct MenuItemDetailsView_Previews: PreviewProvider {
     @State static private var menuItem = MenuItem(title: "Food 5", ingredients: [.broccoli, .carrot, .pasta, .spinach,.tomatoSauce], price: 16.45, menuCategory: .food, orderCount: 1000, image: Image("Logo"))
     
     static var previews: some View {
-        MenuItemDetailsView(menuItem: $menuItem)
+        MenuItemDetailsView(menuItem: menuItem)
     }
 }
