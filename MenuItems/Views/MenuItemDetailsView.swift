@@ -8,44 +8,44 @@
 import SwiftUI
 
 struct MenuItemDetailsView: View {
-    let ingredients = ["spinach", "broccoli", "carrot", "pasta", "peaches", "chicken", "peas"]
-    let menuItem : MenuItem
+    @State var menuItem : MenuItem
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                DetailsView(ingredients: ingredients)
-            }
-            .navigationTitle(menuItem.dishName)
+        ScrollView {
+            DetailsView(menuItem: $menuItem)
         }
+        .navigationTitle(menuItem.title)
+        
   
     }
 }
 
 private struct DetailsView : View {
-    let ingredients : [String]
+    @Binding var menuItem : MenuItem
+    
     var body: some View {
         VStack {
-            Image("Logo")
+            menuItem.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: 500, maxHeight: 500)
             VStack{
                 Text("Price:")
                     .fontWeight(.bold)
-                Text("10.99")
+                Text(String(format: "%.2f", menuItem.price))
             }
             .padding(4)
             VStack {
                 Text("Ordered:")
                     .fontWeight(.bold)
-                Text("1,000")
+                Text("\(menuItem.orderCount)")
             }
             .padding(4)
             VStack {
                 Text("Ingredients:")
                     .fontWeight(.bold)
-                ForEach(ingredients, id: \.self) { ingredient in
-                    Text(ingredient)
+                ForEach(menuItem.ingredients, id: \.self) { ingredient in
+                    Text(ingredient.rawValue)
                 }
             }
         }
@@ -53,7 +53,9 @@ private struct DetailsView : View {
 }
 
 struct MenuItemDetailsView_Previews: PreviewProvider {
+    @State static private var menuItem = MenuItem(title: "Food 5", ingredients: [.broccoli, .carrot, .pasta, .spinach,.tomatoSauce], price: 16.45, menuCategory: .food, orderCount: 1000, image: Image("Logo"))
+    
     static var previews: some View {
-        MenuItemDetailsView(menuItem: MenuItem(dishName: "Food 5"))
+        MenuItemDetailsView(menuItem: menuItem)
     }
 }
