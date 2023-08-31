@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// This is used for the cell of the grid in the MenuItemsView. It allows fo the image to be pass through.
 struct MenuItemCellView: View {
     @Environment(\.colorScheme) var colorScheme
     let item : MenuItem
