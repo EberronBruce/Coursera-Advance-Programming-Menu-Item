@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// This is used for the ingredient list that will be part of the MenuItem struct.
+/// This is part for  Task 3
 enum Ingredient : String {
     case spinach = "Spinach"
     case broccoli = "Broccoli"

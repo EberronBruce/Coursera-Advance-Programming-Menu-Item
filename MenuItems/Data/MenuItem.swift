@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+/// This is the menu item delegate protocol. Though I am using it as a delegate. It was on one requirements of the project.
+/// This is for Task 7 for the assignment
 protocol MenuItemDelegate {
     var id: UUID { get }
     var price : Double { get }
@@ -18,7 +20,8 @@ protocol MenuItemDelegate {
     var image : Image { get set }
 }
 
-
+/// This is the structure that holds the menu item data. It conforms to the MenuItemDelegate
+/// This is for Task 4 and Taks 7 for the assignment
 struct MenuItem : Identifiable, MenuItemDelegate {
 
     let id : UUID
@@ -43,6 +46,10 @@ struct MenuItem : Identifiable, MenuItemDelegate {
 
 
 // MARK: - Mock Data
+/*
+    This is the mock data used in the app for testing the application and setting up the some base data to use in the app
+    This is for Task 5 in the assignment
+ */
 let menuItemMock = MenuItem(title: "Food 5", ingredients: [.broccoli, .carrot, .pasta, .spinach], price: 10.99, menuCategory: .food, orderCount: 1000, image: Image("Logo"))
 let foodItemsMock = [MenuItem(title: "Food 1", ingredients: [.pasta, .spinach, .tomatoSauce], price: 5.99, menuCategory: .food, orderCount: 120, image: Image(systemName: "fork.knife")),
                  MenuItem(title: "Food 2", ingredients: [.broccoli, .spinach, .tomatoSauce], price: 6.99, menuCategory: .food, orderCount: 300, image: Image(systemName: "fork.knife")),

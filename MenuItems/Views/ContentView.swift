@@ -11,9 +11,9 @@ struct ContentView: View {
     @ObservedObject var viewModel: MenuViewViewModel // Add this property
     
     init() {
-        let foodItems = MenuItemCategory(category: "Food", menuItems: foodItemsMock)
-        let drinkItems = MenuItemCategory(category: "Drinks", menuItems: drinkItemsMock)
-        let dessertItems = MenuItemCategory(category: "Desserts", menuItems: desertItemsMock)
+        let foodItems = MenuItemCategory(category: MenuCategory.food.rawValue, menuItems: foodItemsMock)
+        let drinkItems = MenuItemCategory(category: MenuCategory.drink.rawValue, menuItems: drinkItemsMock)
+        let dessertItems = MenuItemCategory(category: MenuCategory.dessert.rawValue, menuItems: desertItemsMock)
         
         viewModel = MenuViewViewModel(
             foodMenuItems: foodItems,

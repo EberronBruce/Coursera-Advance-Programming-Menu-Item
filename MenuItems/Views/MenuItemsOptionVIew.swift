@@ -41,7 +41,7 @@ struct MenuItemsOptionView: View {
 private struct ListItems : View {
     let section : FilterSection
     @State private var selectedItems: Set<String> = [] // Track selected items per section
-    @State private var selectedSortOption: SortMenu? = nil // Track selected sort option
+    @State private var selectedSortOption: SortMenu = .alphabetic // Track selected sort option
     @ObservedObject var viewModel : MenuViewViewModel
     
     var body: some View {
@@ -78,7 +78,7 @@ private struct ListItems : View {
                      if isSelected {
                          viewModel.selectedSortOptions = sortOption
                      } else if viewModel.selectedSortOptions == sortOption {
-                         viewModel.selectedSortOptions = nil
+                         //viewModel.selectedSortOptions = nil
                      }
                  }
              }
