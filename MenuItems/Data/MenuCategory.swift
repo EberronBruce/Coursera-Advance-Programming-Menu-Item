@@ -119,6 +119,5 @@ extension MenuItem: Equatable {
             lhs.price == rhs.price &&
             lhs.menuCategory == rhs.menuCategory &&
             lhs.orderCount == rhs.orderCount
-        // Add any other properties that need to be compared for equality
     }
 }

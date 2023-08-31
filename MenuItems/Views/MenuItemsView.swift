@@ -62,6 +62,7 @@ struct GridSectionAndCell : View {
             ForEach(category.menuItems, id: \.id) { item in
                 NavigationLink(destination: MenuItemDetailsView(menuItem: item)) {
                     MenuItemCellView(item: item)
+                        .preferredColorScheme(.light)
                         .foregroundColor(.black)
                 }
             }
@@ -90,9 +91,9 @@ struct SectionHeaderView: View {
 struct MenuItemsView_Previews: PreviewProvider {
     static var previews: some View {
 
-        let foodItems = MenuItemCategory(category: "Food", menuItems: foodItemsMock)
-        let drinkItems = MenuItemCategory(category: "Drinks", menuItems: drinkItemsMock)
-        let dessertItems = MenuItemCategory(category: "Desserts", menuItems: desertItemsMock)
+        let foodItems = MenuItemCategory(category: MenuCategory.food.rawValue, menuItems: foodItemsMock)
+        let drinkItems = MenuItemCategory(category: MenuCategory.drink.rawValue, menuItems: drinkItemsMock)
+        let dessertItems = MenuItemCategory(category: MenuCategory.dessert.rawValue, menuItems: desertItemsMock)
         
         let viewModel = MenuViewViewModel(
             foodMenuItems: foodItems,

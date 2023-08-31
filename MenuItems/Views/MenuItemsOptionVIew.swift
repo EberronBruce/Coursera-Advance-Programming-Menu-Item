@@ -120,9 +120,9 @@ private struct ItemRow: View {
 
 struct MenuItemsOptionView_Previews: PreviewProvider {
     static var previews: some View {
-        let foodItems = MenuItemCategory(category: "Food", menuItems: foodItemsMock)
-        let drinkItems = MenuItemCategory(category: "Drinks", menuItems: drinkItemsMock)
-        let dessertItems = MenuItemCategory(category: "Desserts", menuItems: desertItemsMock)
+        let foodItems = MenuItemCategory(category: MenuCategory.food.rawValue, menuItems: foodItemsMock)
+        let drinkItems = MenuItemCategory(category: MenuCategory.drink.rawValue, menuItems: drinkItemsMock)
+        let dessertItems = MenuItemCategory(category: MenuCategory.dessert.rawValue, menuItems: desertItemsMock)
         
         let viewModel = MenuViewViewModel(
             foodMenuItems: foodItems,
