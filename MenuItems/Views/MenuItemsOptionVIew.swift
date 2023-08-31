@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+/// This enum is used to create the two filter sections
 enum FilterSection : String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     case selectedCategories = "Selected Categories"
     case sortBy = "SORT BY"
 }
 
+/// This is the options view and it functions and allows the using to select categories and sorting. This is part of Task 1 and Task 2 in the assignement
 struct MenuItemsOptionView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel : MenuViewViewModel
@@ -38,6 +40,7 @@ struct MenuItemsOptionView: View {
     }
 }
 
+/// This allows for the each list item in the section. It keeps track on what items are selected and what is the sort by section.
 private struct ListItems : View {
     let section : FilterSection
     @State private var selectedItems: Set<String> = [] // Track selected items per section
@@ -57,6 +60,7 @@ private struct ListItems : View {
         }
     }
     
+    /// This function is a generic and is used to se the sort options so that the checkmarks states and the states for the views for each list item.
     private func isSelected<T: RawRepresentable>(for item: T) -> Binding<Bool> where T.RawValue == String {
          Binding(
              get: {
@@ -85,35 +89,9 @@ private struct ListItems : View {
          )
      }
     
-//    private func isSelected<T: RawRepresentable>(for item: T) -> Binding<Bool> where T.RawValue == String {
-//        Binding(
-//            get: {
-//                if section == .sortBy {
-//                    return selectedSortOption == item as? SortMenu
-//                } else {
-//                    return selectedItems.contains(item.rawValue)
-//                }
-//            },
-//            set: { isSelected in
-//                if section == .sortBy {
-//                    if isSelected {
-//                        selectedSortOption = item as? SortMenu
-//                    } else {
-//                        selectedSortOption = nil
-//                    }
-//                } else {
-//                    if isSelected {
-//                        selectedItems.insert(item.rawValue)
-//                    } else {
-//                        selectedItems.remove(item.rawValue)
-//                    }
-//                }
-//            }
-//        )
-//    }
-    
 }
 
+/// This is the row item that allows for the checkmark and allows the call through the button back to viewModel to sort and filter the items.
 private struct ItemRow: View {
     var itemText: String
     var isSelected: Binding<Bool>

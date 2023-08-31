@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// This is the details menu. It is part of the Task 1. It takes the menuItem. It places the UI in the scroll view.
 struct MenuItemDetailsView: View {
     @State var menuItem : MenuItem
     
@@ -20,6 +21,7 @@ struct MenuItemDetailsView: View {
     }
 }
 
+/// This is the details of the view. It shows the details based on the menuItem passed to it. It is part of Task 1.
 private struct DetailsView : View {
     @Binding var menuItem : MenuItem
     

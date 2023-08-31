@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
- 
+
+/// This is the highest level view. Because of how SwiftUI works, it is better for code readablity to break it up. This is the Navigation view section. This goes to the MenuItemsOptionView to be able to filter and sort. This is used for Task 1 like all of the UI.
 struct MenuItemsView: View {
     @State private var isPresentingDetailedView = false
     @ObservedObject var viewModel : MenuViewViewModel
@@ -34,6 +35,7 @@ struct MenuItemsView: View {
     }
 }
 
+/// This is used to setup the Grid and allow it to scroll.
 struct GridAndScrollView: View {
     
     let columns = [GridItem(.adaptive(minimum: 100, maximum: 300))]
@@ -51,6 +53,7 @@ struct GridAndScrollView: View {
     
 }
 
+/// This section up the seciton and the cells of the grid.
 struct GridSectionAndCell : View {
     let category : MenuItemCategory
 
@@ -66,7 +69,7 @@ struct GridSectionAndCell : View {
     }
 }
 
-
+/// This is used fo the section so that the seciton title is on the left instead of the middle
 struct SectionHeaderView: View {
     let title: String
     

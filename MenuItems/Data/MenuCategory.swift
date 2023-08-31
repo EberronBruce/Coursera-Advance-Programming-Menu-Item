@@ -62,7 +62,7 @@ class MenuViewViewModel : ObservableObject {
     }
     
     /// This fuction sorts the menu items of each category depending on what the selectedSortOptions is selected to.
-    private func sortMenuItems() {
+    func sortMenuItems() {
         var foodItems : [MenuItem]
         var drinkItems : [MenuItem]
         var desertItems : [MenuItem]
@@ -102,10 +102,23 @@ class MenuViewViewModel : ObservableObject {
         menuItemCategories = filteredCategories
        
     }
-
-
-
 }
 
 
+extension MenuViewViewModel {
+    var testableFoodMenuItems: MenuItemCategory { foodMenuItems }
+    var testableDrinkMenuItems: MenuItemCategory { drinkMenuItems }
+    var testableDesertMenuItems: MenuItemCategory { desertMenuItems }
+}
 
+extension MenuItem: Equatable {
+    static func == (lhs: MenuItem, rhs: MenuItem) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.title == rhs.title &&
+            lhs.ingredients == rhs.ingredients &&
+            lhs.price == rhs.price &&
+            lhs.menuCategory == rhs.menuCategory &&
+            lhs.orderCount == rhs.orderCount
+        // Add any other properties that need to be compared for equality
+    }
+}

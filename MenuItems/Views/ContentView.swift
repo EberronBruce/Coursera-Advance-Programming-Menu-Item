@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var viewModel: MenuViewViewModel // Add this property
+    // This viewModel is used to keep track of data state
+    @ObservedObject var viewModel: MenuViewViewModel
     
+    /*
+     Initializing the viewModel here. In reality this would come from the web or from the database, but there needs data to make a working app.
+     */
     init() {
         let foodItems = MenuItemCategory(category: MenuCategory.food.rawValue, menuItems: foodItemsMock)
         let drinkItems = MenuItemCategory(category: MenuCategory.drink.rawValue, menuItems: drinkItemsMock)
